@@ -88,10 +88,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
         <SidebarRail />
       </Sidebar>
       <SidebarInset>
-        <div className="flex h-14 items-center px-2">
-          <SidebarTrigger />
-          <div className="ml-2 text-xs text-muted-foreground">Press ⌘/Ctrl+B to toggle</div>
-        </div>
+        <TopbarContainer />
         {children}
       </SidebarInset>
     </SidebarProvider>
