@@ -18,6 +18,7 @@ export function Topbar() {
   return (
     <div className="sticky top-0 z-20 w-full border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-14 items-center px-3 md:px-4 gap-3">
+        <SidebarTrigger />
         <Link to="/" className="font-semibold tracking-tight text-foreground/90">
           <span className="text-primary">Aegis</span> Intelligence
         </Link>
