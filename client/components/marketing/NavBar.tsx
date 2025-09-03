@@ -17,19 +17,49 @@ export function NavBar() {
       className={
         "sticky top-0 z-40 w-full border-b border-border/60 backdrop-blur bg-background/70"
       }
-      style={{ boxShadow: elevated ? "0 1px 0 0 hsl(var(--border))" : undefined }}
+      style={{
+        boxShadow: elevated ? "0 1px 0 0 hsl(var(--border))" : undefined,
+      }}
     >
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex h-14 items-center gap-4">
-          <Link to="/" className="font-semibold tracking-tight text-foreground/90">
+          <Link
+            to="/"
+            className="font-semibold tracking-tight text-foreground/90"
+          >
             <span className="text-primary">Aegis</span> Intelligence
           </Link>
           <div className="hidden md:flex items-center gap-6 mx-auto text-sm text-foreground/80">
-            <a href="#solutions" className="hover:text-foreground transition-colors">Solutions</a>
-            <a href="#platform" className="hover:text-foreground transition-colors">Platform</a>
-            <a href="#resources" className="hover:text-foreground transition-colors">Resources</a>
-            <a href="#company" className="hover:text-foreground transition-colors">Company</a>
-            <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
+            <a
+              href="#solutions"
+              className="hover:text-foreground transition-colors"
+            >
+              Solutions
+            </a>
+            <a
+              href="#platform"
+              className="hover:text-foreground transition-colors"
+            >
+              Platform
+            </a>
+            <a
+              href="#resources"
+              className="hover:text-foreground transition-colors"
+            >
+              Resources
+            </a>
+            <a
+              href="#company"
+              className="hover:text-foreground transition-colors"
+            >
+              Company
+            </a>
+            <a
+              href="#contact"
+              className="hover:text-foreground transition-colors"
+            >
+              Contact
+            </a>
           </div>
           <div className="ml-auto flex items-center gap-2">
             <Button variant="ghost" asChild>

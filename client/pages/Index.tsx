@@ -1,7 +1,19 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertsTable, type Alert } from "@/components/tables/AlertsTable";
 import { LayoutShell } from "@/components/layout/AppSidebar";
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 const kpis = [
   { label: "Frauds Detected Today", value: "42" },
@@ -10,7 +22,10 @@ const kpis = [
   { label: "Deepfake Content Flagged", value: "12" },
 ];
 
-const fraudTrends = Array.from({ length: 12 }).map((_, i) => ({ month: `M${i + 1}`, value: Math.round(40 + Math.random() * 60) }));
+const fraudTrends = Array.from({ length: 12 }).map((_, i) => ({
+  month: `M${i + 1}`,
+  value: Math.round(40 + Math.random() * 60),
+}));
 const severityData = [
   { name: "Low", value: 28 },
   { name: "Medium", value: 45 },
@@ -26,9 +41,15 @@ const typesData = [
 
 const alerts: Alert[] = Array.from({ length: 32 }).map((_, i) => ({
   id: `ALR-${202400 + i}`,
-  severity: (['Low', 'Medium', 'High', 'Critical'] as const)[Math.floor(Math.random() * 4)],
-  source: ["Exchange Feed", "Social", "News", "Filing"][Math.floor(Math.random() * 4)],
-  entity: ["ABC Advisors", "XYZ Capital", "Omega Labs", "Nova IPO"][Math.floor(Math.random() * 4)],
+  severity: (["Low", "Medium", "High", "Critical"] as const)[
+    Math.floor(Math.random() * 4)
+  ],
+  source: ["Exchange Feed", "Social", "News", "Filing"][
+    Math.floor(Math.random() * 4)
+  ],
+  entity: ["ABC Advisors", "XYZ Capital", "Omega Labs", "Nova IPO"][
+    Math.floor(Math.random() * 4)
+  ],
   date: new Date(Date.now() - i * 86400000).toISOString().slice(0, 10),
 }));
 
@@ -40,10 +61,14 @@ export default function Dashboard() {
           {kpis.map((k) => (
             <Card key={k.label} className="bg-card/60 border-border/60">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">{k.label}</CardTitle>
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  {k.label}
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-semibold tracking-tight">{k.value}</div>
+                <div className="text-3xl font-semibold tracking-tight">
+                  {k.value}
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -59,15 +84,39 @@ export default function Dashboard() {
                 <AreaChart data={fraudTrends} margin={{ left: -20 }}>
                   <defs>
                     <linearGradient id="a" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.7} />
-                      <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.05} />
+                      <stop
+                        offset="5%"
+                        stopColor="hsl(var(--primary))"
+                        stopOpacity={0.7}
+                      />
+                      <stop
+                        offset="95%"
+                        stopColor="hsl(var(--primary))"
+                        stopOpacity={0.05}
+                      />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                  <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="hsl(var(--border))"
+                  />
+                  <XAxis
+                    dataKey="month"
+                    stroke="hsl(var(--muted-foreground))"
+                  />
                   <YAxis stroke="hsl(var(--muted-foreground))" />
-                  <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }} />
-                  <Area type="monotone" dataKey="value" stroke="hsl(var(--primary))" fill="url(#a)" />
+                  <Tooltip
+                    contentStyle={{
+                      background: "hsl(var(--card))",
+                      border: "1px solid hsl(var(--border))",
+                    }}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="value"
+                    stroke="hsl(var(--primary))"
+                    fill="url(#a)"
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             </CardContent>
@@ -80,10 +129,18 @@ export default function Dashboard() {
             <CardContent className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={severityData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="hsl(var(--border))"
+                  />
                   <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" />
                   <YAxis stroke="hsl(var(--muted-foreground))" />
-                  <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }} />
+                  <Tooltip
+                    contentStyle={{
+                      background: "hsl(var(--card))",
+                      border: "1px solid hsl(var(--border))",
+                    }}
+                  />
                   <Bar dataKey="value" fill="hsl(var(--accent))" />
                 </BarChart>
               </ResponsiveContainer>
@@ -99,9 +156,21 @@ export default function Dashboard() {
             <CardContent className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }} />
-                  <Pie data={typesData} dataKey="value" nameKey="name" innerRadius={50} outerRadius={80}
-                       fill="hsl(var(--primary))" stroke="hsl(var(--background))" />
+                  <Tooltip
+                    contentStyle={{
+                      background: "hsl(var(--card))",
+                      border: "1px solid hsl(var(--border))",
+                    }}
+                  />
+                  <Pie
+                    data={typesData}
+                    dataKey="value"
+                    nameKey="name"
+                    innerRadius={50}
+                    outerRadius={80}
+                    fill="hsl(var(--primary))"
+                    stroke="hsl(var(--background))"
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </CardContent>
