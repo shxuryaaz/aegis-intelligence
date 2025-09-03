@@ -21,15 +21,7 @@ import { cn } from "@/lib/utils";
 import { Topbar } from "./Topbar";
 
 function TopbarContainer() {
-  return (
-    <div>
-      <div className="flex h-14 items-center px-2">
-        <SidebarTrigger />
-        <div className="ml-2 text-xs text-muted-foreground">Press ⌘/Ctrl+B to toggle</div>
-      </div>
-      <Topbar />
-    </div>
-  );
+  return <Topbar />;
 }
 
 export function LayoutShell({ children }: { children: React.ReactNode }) {
