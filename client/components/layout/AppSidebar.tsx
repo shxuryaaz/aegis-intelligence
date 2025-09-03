@@ -18,6 +18,19 @@ import {
 } from "@/components/ui/sidebar";
 import { Badge, BarChart2, FileText, FolderKanban, Home, Layers3, ScanLine, Settings, ShieldAlert } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Topbar } from "./Topbar";
+
+function TopbarContainer() {
+  return (
+    <div>
+      <div className="flex h-14 items-center px-2">
+        <SidebarTrigger />
+        <div className="ml-2 text-xs text-muted-foreground">Press ⌘/Ctrl+B to toggle</div>
+      </div>
+      <Topbar />
+    </div>
+  );
+}
 
 export function LayoutShell({ children }: { children: React.ReactNode }) {
   const location = useLocation();
